@@ -1,27 +1,23 @@
----
 language: ruby
 rvm:
-  - 2.2
-  - 2.1
-  - 2.0
-  - 1.9.3
-
+- 2.2
+- 2.1
+- 2.0
+- 1.9.3
 sudo: required
-
 services:
-  - docker
-
+- docker
 script:
-  - >
-    wget -O- bit.ly/ansibletest | env
-    DOCKER_IMAGES="centos:5 centos:6 centos:7 debian:7 debian:8
-    debian:stretch fedora:20 fedora:21 fedora:22 fedora:23 fedora:24
-    ubuntu:12.04 ubuntu:14.04 ubuntu:14.04"
-    ANSIBLE_VERSIONS="1.4.4"
-    sh
-
+- >
+  wget -O- bit.ly/ansibletest | env
+  DOCKER_IMAGES="centos:5 centos:6 centos:7 debian:7 debian:8
+  debian:stretch fedora:20 fedora:21 fedora:22 fedora:23 fedora:24
+  ubuntu:12.04 ubuntu:14.04 ubuntu:14.04"
+  ANSIBLE_VERSIONS="1.4.4"
+  sh
 after_failure:
-  - cat role-tester-ansible-master/.kitchen/logs/*.log | grep -v '^I, '
-
+- cat role-tester-ansible-master/.kitchen/logs/*.log | grep -v '^I, '
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  slack:
+    secure: g/H1lhXgRMg56tnKsFLSgGnfyogM8HOf/SvIaj63AJ2wmzsHLw4CfnaEfATeKcRmCBvQeptTeyeUU+hKwbCN3pEQnJ0M3tVwX2gsKWqZnXdTodxV8VjMhBhPAKt6g4L3EJ0YvFk30MVEinjFXKtTy0YV73zXIb13yJwMMc2GCNwBYYvQxSz1B4NvkOz1VeSBtnHbSuvNHK+Ycv5yt8aLeHr8jr9ueOgISLcCW842hh9yjYTr8jkiygymLcwSkzX133pKqPohmGXzexOjuFKkY2cAKNTVrYagf2Qd+BmZ32LNsWBMNQfhKA6+e3FjG4nwFrv5EnnE2dm68cekdZfy6155YPhKDDiIADteiGMITSHnMbIhZDwcEHVuT/yaVNiQvD3UmTy3anQbTAe0SjpzciHwmQ8ERLYfnESM8XFREEDoxPk4ZrQO4/rNY7D2aDkxsA+quncU+JbIPt6IEIzOzh/20+EYL3x9AMxY+riPKAwuJDNgBsOes1z+gykzMYXAMoD+HVJDiaE4mj473TG6Xad3viM1qB8+bP5/wgCmvQgnqjHMU4pcD2vm087N3YJkSWddWwN1COG6+CnMJZNJAsfM9kciBElKhaRK18icbyamlBz0saiCBEHXSWt8ZA/dvGDsphiyyB6sDWJTryr0ybJeNvb9tn9nsZ3jNouGdZI=
