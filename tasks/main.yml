@@ -1,4 +1,6 @@
 ---
+- include: compat.yml
+
 - name: install .forward file
   template: src=dot.forward.j2 dest=/root/.forward
   sudo: True
